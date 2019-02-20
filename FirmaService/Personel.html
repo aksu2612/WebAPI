@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  >
+    <script src="JS/toastr.min.js"></script>
+    <script src="JS/AJX.js"></script>
+    <link href="CSS/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="CSS/MainPage.css" rel="stylesheet" />
+</head>
+<body>
+        <div  class="container">
+            
+            <div class="col-md-4">
+                <div class="card card-login text-center bg-dark">
+                    <button type='submit' class='btn btn-primary'  data-toggle='modal' data-target='#myModal2'>Personel Kayıt</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-login mx-auto text-center bg-dark">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-danger float-right login_btn" type="button" data-toggle="dropdown">
+                            Listele
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Firma.html">Firma</a></li>
+                            <li><a href="/Personel.html">Personel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div  class=" form-container ">
+                <table class="table">
+                    <thead>
+                        <tr role="row">
+                            <th>
+                                Sıra
+                            </th>
+                            <th>
+                                TC
+                            </th>
+                            <th>
+                                Ad
+                            </th>
+                            <th>
+                                Soyad
+                            </th>
+                            <th>
+                                Adres
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablodoldur"></tbody>
+                </table>
+                <!-- Modal -->
+            </div>
+      </div>
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+              <div class="modal-content">
+
+              </div>
+          </div>
+      </div>
+        <!--Firma Kayıt Popup-->
+        
+       <!--Personel Kayıt Popup-->
+        <div class=" card-login mx-auto text-center bg-dark">
+            <div class="modal fade" id="myModal2" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <form>
+                            <div class="form-group">
+                                <label for="inputAddress">TC</label>
+                                <input type="text" class="form-control" id="TC" placeholder="TC Kimlik Numaranızı Giriniz">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">AD</label>
+                                <input type="text" class="form-control" id="isim" placeholder="Adınız">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">SOYAD</label>
+                                <input type="text" class="form-control" id="Soyad" placeholder="Soyadınız">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">Adres</label>
+                                <input type="text" class="form-control" id="Adres" placeholder="Açık Adresiniz">
+                            </div>
+                            <select id="Perfirmadropdown"></select>
+                           <button type="submit" class="btn btn-primary" onclick="Modelsend(true)">Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+ 
+            loadtable();
+        })
+      
+        function Modelsend(e) {
+           
+            if (e) {
+                    var model = {
+                        ID: $('#ID').val(),
+                        TC: $('#TC').val(),
+                        Ad: $('#isim').val(),
+                        Soyad: $('#Soyad').val(),
+                        Adres: $('#Adres').val(),
+                        Firma_ID: $('#Perfirmadropdown').val()
+                    }
+
+                    GetAjx2(model, "api/personels/PersonelKayitet", function (w) {
+                        if (w) {
+                       
+                            $('#myModal2').hide();
+                            $('#Perfirmadropdown').val() = "";
+                            loadtable();
+                            loadtable();
+                        }
+                    });
+                }
+          
+        }
+        
+       function loadtable(){
+                   GetAjx('', "/api/personels", function (e) {
+                       $('#tablodoldur')[0].innerHTML = "";
+                       var liste = "";
+                       for (var i = 0; i < e.length; i++) {
+                           liste += "<tr>";
+                           liste += "<td>" + (i + 1) + "</td>";
+                           liste += " <td>" + e[i].TC + "</td>";
+                           liste += " <td>" + e[i].Ad + "</td>";
+                           liste += "<td>" + e[i].Soyad + "</td>";
+                           liste += "<td>" + e[i].Adres + "</td>"
+                           liste += "<td><Button type='button' class='btn btn-primary'  onclick='sil(" + e[i].ID + ")'>Sil</button></td>";
+                           liste += "<td>   <Button type='submit' class='btn btn-primary'  onclick='PopupAC()'data-toggle='modal' data-target='#myModal' >Güncelle </button> </td>";
+
+                       }
+                       $('#tablodoldur')[0].innerHTML = liste;
+                   
+                   })
+
+                   GetAjx('', 'api/firmas', function (e) {
+                       for (var i = 0; i < e.length; i++) {
+                           $('#Perfirmadropdown').append("<option value=" + e[i].ID + "><a href='#'>" + e[i].Ad + '</a></option>');
+                       }
+                       
+                   })
+           
+       }
+ 
+ 
+        function sil(e) {
+            GetAjx2('', "api/personels/Personelsil?perid=" + e, function (e) {
+                    loadtable();
+                    loadtable();
+            });
+        }
+       
+    </script>
+</body>
+</html>

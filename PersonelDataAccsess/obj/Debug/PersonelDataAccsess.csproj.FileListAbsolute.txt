@@ -1,0 +1,20 @@
+c:\users\axu\documents\visual studio 2013\Projects\FirmaService\PersonelDataAccsess\bin\Debug\PersonelDataAccsess.dll.config
+c:\users\axu\documents\visual studio 2013\Projects\FirmaService\PersonelDataAccsess\bin\Debug\PersonelDataAccsess.dll
+c:\users\axu\documents\visual studio 2013\Projects\FirmaService\PersonelDataAccsess\bin\Debug\PersonelDataAccsess.pdb
+c:\users\axu\documents\visual studio 2013\Projects\FirmaService\PersonelDataAccsess\bin\Debug\EntityFramework.dll
+c:\users\axu\documents\visual studio 2013\Projects\FirmaService\PersonelDataAccsess\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\axu\documents\visual studio 2013\Projects\FirmaService\PersonelDataAccsess\bin\Debug\EntityFramework.xml
+c:\users\axu\documents\visual studio 2013\Projects\FirmaService\PersonelDataAccsess\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\axu\documents\visual studio 2013\Projects\FirmaService\PersonelDataAccsess\obj\Debug\PersonelDataAccsess.csprojResolveAssemblyReference.cache
+c:\users\axu\documents\visual studio 2013\Projects\FirmaService\PersonelDataAccsess\obj\Debug\PersonelDataAccsess.dll
+c:\users\axu\documents\visual studio 2013\Projects\FirmaService\PersonelDataAccsess\obj\Debug\PersonelDataAccsess.pdb
+D:\FirmaService\PersonelDataAccsess\bin\Debug\PersonelDataAccsess.dll.config
+D:\FirmaService\PersonelDataAccsess\bin\Debug\PersonelDataAccsess.dll
+D:\FirmaService\PersonelDataAccsess\bin\Debug\PersonelDataAccsess.pdb
+D:\FirmaService\PersonelDataAccsess\bin\Debug\EntityFramework.dll
+D:\FirmaService\PersonelDataAccsess\bin\Debug\EntityFramework.SqlServer.dll
+D:\FirmaService\PersonelDataAccsess\bin\Debug\EntityFramework.xml
+D:\FirmaService\PersonelDataAccsess\bin\Debug\EntityFramework.SqlServer.xml
+D:\FirmaService\PersonelDataAccsess\obj\Debug\PersonelDataAccsess.csprojResolveAssemblyReference.cache
+D:\FirmaService\PersonelDataAccsess\obj\Debug\PersonelDataAccsess.dll
+D:\FirmaService\PersonelDataAccsess\obj\Debug\PersonelDataAccsess.pdb
